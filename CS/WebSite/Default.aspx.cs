@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxGridView;
+using DevExpress.Web;
 using System.Collections.ObjectModel;
 using System.Text;
 
@@ -12,7 +12,7 @@ public partial class _Default : System.Web.UI.Page {
         if (Session["layout"] == null)
             Session["layout"] = new Dictionary<int, string>();
     }
-    protected void callback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e) {
+    protected void callback_Callback(object source, DevExpress.Web.CallbackEventArgs e) {
         grid.DataBind();
         Dictionary<int, string> dictionary = Session["layout"] as Dictionary<int, string>;
         if (dictionary != null) {
@@ -38,7 +38,7 @@ public partial class _Default : System.Web.UI.Page {
             Session["fields"] = sb.ToString();
         }
     }
-    protected void grid_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e) {
+    protected void grid_CustomCallback(object sender, DevExpress.Web.ASPxGridViewCustomCallbackEventArgs e) {
         Dictionary<int, string> dictionary = Session["layout"] as Dictionary<int, string>;
         if (dictionary == null || Session["rowscount"] == null || Session["fields"] == null)
             return;

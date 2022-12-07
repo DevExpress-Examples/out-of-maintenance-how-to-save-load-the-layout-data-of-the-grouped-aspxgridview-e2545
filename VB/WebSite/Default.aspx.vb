@@ -4,7 +4,7 @@ Imports System.Collections.Generic
 Imports System.Web
 Imports System.Web.UI
 Imports System.Web.UI.WebControls
-Imports DevExpress.Web.ASPxGridView
+Imports DevExpress.Web
 Imports System.Collections.ObjectModel
 Imports System.Text
 
@@ -15,7 +15,7 @@ Partial Public Class _Default
             Session("layout") = New Dictionary(Of Integer, String)()
         End If
     End Sub
-	Protected Sub callback_Callback(ByVal source As Object, ByVal e As DevExpress.Web.ASPxCallback.CallbackEventArgs)
+	Protected Sub callback_Callback(ByVal source As Object, ByVal e As DevExpress.Web.CallbackEventArgs)
 		grid.DataBind()
 		Dim dictionary As Dictionary(Of Integer, String) = TryCast(Session("layout"), Dictionary(Of Integer, String))
 		If dictionary IsNot Nothing Then
@@ -41,7 +41,7 @@ Partial Public Class _Default
 			Session("fields") = sb.ToString()
 		End If
 	End Sub
-	Protected Sub grid_CustomCallback(ByVal sender As Object, ByVal e As DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs)
+	Protected Sub grid_CustomCallback(ByVal sender As Object, ByVal e As DevExpress.Web.ASPxGridViewCustomCallbackEventArgs)
 		Dim dictionary As Dictionary(Of Integer, String) = TryCast(Session("layout"), Dictionary(Of Integer, String))
 		If dictionary Is Nothing OrElse Session("rowscount") Is Nothing OrElse Session("fields") Is Nothing Then
 			Return
